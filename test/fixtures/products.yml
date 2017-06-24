@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  price: 
+  colour: 
+  status: 
+  inward_date: 
+  type: 
+  description: MyString
+
+two:
+  name: 
+  price: 
+  colour: 
+  status: 
+  inward_date: 
+  type: 
+  description: MyString

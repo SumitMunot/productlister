@@ -1,0 +1,5 @@
+<h1>New <%= @type.capitalize if @type.present? %> </h1>
+
+<%= render 'form', product: @product, type: @type %>
+
+<%= link_to 'Back', products_path %>
