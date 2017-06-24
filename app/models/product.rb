@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-  validates_presence_of :name, :price, :status, :inward_date, :type, :description
+  validates_presence_of :name, :price, :inward_date, :type, :description
+  validates :type, inclusion: { in: %w(Pen Notebook), message: "must be either Pen or Notebook" }
 
   def price_sum(product_type)
   	Product.where(type: product_type).sum { |prod| prod.price }
@@ -16,7 +17,7 @@ class Product < ApplicationRecord
   end
 
   def self.type
-    "Generic"
+  	"Generic"
   end
 
   def type

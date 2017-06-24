@@ -10,11 +10,12 @@
   <%= @product.price %>
 </p>
 
-<p>
-  <strong>Colour:</strong>
-  <%= @product.colour %>
-</p>
-
+<% if @product.colour? %>
+  <p>
+    <strong>Colour:</strong>
+    <%= @product.colour %>
+  </p>
+<% end %>
 <p>
   <strong>Status:</strong>
   <%= @product.status %>

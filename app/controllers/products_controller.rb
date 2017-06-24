@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    # byebug
     @products = Product.all
   end
 
@@ -14,7 +15,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @type = params[:type]
+    @type = params[:type].capitalize
     @product = Product.new
   end
 
@@ -25,16 +26,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    @product = Product.new_by_type(product_params)
+    if @product.save
+      flash[:success] = "Product created"
+      redirect_to products_path
+    else
+      flash[:danger] = "Issue while saving product"
+      render :new
     end
   end
 

@@ -21,14 +21,17 @@
     <%= form.text_field :price, id: :product_price %>
   </div>
 
-  <div class="field">
-    <%= form.label :colour %>
-    <%= form.text_field :colour, id: :product_colour %>
-  </div>
+  <% if type=='Pen' %>
+    <div class="field">
+      <%= form.label :colour %>
+      <%= form.text_field :colour, id: :product_colour %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status, id: :product_status %>
+    <%= form.hidden_field :status, value: false %>
+    <%= form.check_box :status, id: :product_status, value: true %>
   </div>
 
   <div class="field">
@@ -37,8 +40,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type, id: :product_type %>
+    <%= form.hidden_field :type, value: type %>
   </div>
 
   <div class="field">
